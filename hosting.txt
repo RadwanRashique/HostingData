@@ -1,0 +1,112 @@
+1)go to  Hostinger 
+
+2)purchase domain
+
+
+3)DNS Management:(domain name system)settings        (edit domain name server  if we use external system like aws) :   to point your domain to a specific IP address. 
+
+
+
+1)Open your web browser and go to the AWS Management Console.
+
+2) go to EC2 Dashboard, click the "Launch Instance"  (virtual machine)
+
+3) Choose an Amazon Machine Image (AMI)    Amazon Linux 2" or another Linux distribution suitable for your needs.
+Configure the network settings,  Add Storage     . The default settings are often adequate for a basic setup.
+
+
+4)Configure Security Groups
+Configure inbound rules 
+
+
+5)Select or Create a Key Pair
+This key pair is necessary for SSH access to your instance.
+
+6)Launch the Instance
+
+7) now go to terminal and by using the downloaded key pair, ssh to your instance    ssh----secure shell   a  network protocol  for secure communication   it uses key-pair  a public and a private key  one will be stored in cloud and the other in user computer ,by using that key pair user can access instance
+
+
+ https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-22-04#step-2-installing-pm2
+
+8)  install node js on our instance
+ Install Node.js:    sudo yum update -y
+sudo yum install -y nodejs
+9)install mongo db
+
+
+10)  set git ignore in project and push backed code to git and take the clone id and connect it with our instance   
+git clone repoName
+
+11)nstall Project Dependencies and Configure Environment Variables:
+Navigate to Your Project Directory:
+ install the dependencies:
+Configure Environment Variables:nano .env
+
+12)Start your Node.js application. You may use a process manager like pm2 for better process 
+npm install -g pm2
+pm2 start app.js
+
+
+
+
+*******
+1)  Configure Nginx as a Reverse Proxy:
+Install Nginx on Your EC2 Instance:
+Configure Nginx:
+Restart Nginx:
+           
+
+*****
+set netlify select the option git and push that frontend code to netlify
+go to our poject and  enter npm run  build
+then inside the build folder create a file as _redirects and put this code in it   /*  /index.html 200
+and go to netlify and then select upto this file  there and deploy and check at view option
+
+2)
+Setting up HTTPS for Your Backend (EC2 Instance):
+ Install Certbot:
+Obtain SSL/TLS Certificate:
+Certbot will automatically retrieve and install the certificate.
+Adjust your web server configuration to use the obtained SSL/TLS certificate.
+
+
+3)
+Setting up HTTPS for Your Frontend (Netlify):
+1. Navigate to Netlify Site Settings:
+Log in to your Netlify account.
+
+In the Netlify dashboard, select your deployed site.
+
+Go to "Site settings" > "Domain management."
+
+2. Configure Custom Domain:
+If you haven't already set up a custom domain:
+
+Click "Add custom domain."
+Follow the prompts to add your custom domain.
+3. Enable HTTPS:
+In the "Domain management" section, find your custom domain.
+
+Click "SSL/TLS certificate."
+SSL (Secure Sockets Layer) and TLS (Transport Layer Security) are cryptographic protocols that provide secure communication over a computer network,
+
+
+Under "HTTPS," select "Enable HTTPS."
+
+Netlify will automatically provision an SSL certificate for your domain.
+
+
+Note:
+Let's Encrypt certificates are valid for 90 days, and it's recommended to set up automatic renewal. Certbot usually sets up a cron job for this, so you may not need to worry about it.
+
+Ensure that your security groups and firewalls allow traffic on ports 443 (HTTPS) for both your EC2 instance and Netlify.
+
+
+******
+use pm2 to gracefully stop and restart your application. 
+
+To Stop a Node.js Application Using pm2: pm2 stop <app-name-or-id>
+To Restart a Node.js Application Using pm2:pm2 restart <app-name-or-id>
+To Stop All pm2 Managed Applications:  pm2 stop all
+To Restart All pm2 Managed Applications:pm2 restart all
